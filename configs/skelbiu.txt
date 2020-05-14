@@ -1,0 +1,29 @@
+{
+category_scrape: {
+    start_page: "https://www.skelbiu.lt/skelbimai/1?autocompleted=1&keywords=&submit_bn=&cost_min=&cost_max=&cities=465&distance=0&mainCity=1&search=1&category_id=1168&type=0&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=1&orderBy=-1&detailsSearch=0",
+    name_selector: "//*[@id='itemsList']/ul/li/div/h3/a/text()",
+    preferred_city_selector: "//*[@id='itemsList']/ul/li/div/div[contains(@class,'adsCity')]/text()",
+    price_selector: "//*[@id='itemsList']/ul/li/div/div[contains(@class,'adsPrice')]",
+    product_href_selector: "//*[@id='itemsList']/ul/li/div/h3/a/@href",
+    web_urn_replacer: "https://www.skelbiu.lt",
+    desired_city: "Vilnius",
+    desired_product: ["MacBook Pro 16", "Pro 16", "Pro 16-inch"],
+    desired_product_price: 2200,
+    currency_symbol: "€",
+    pagination: {
+        start_number: 1,
+        pagination_extractor: 10,
+        pagination_generator: "",
+        put_pagination_in: "https://www.skelbiu.lt/skelbimai/PAGINATION?autocompleted=1&keywords=&submit_bn=&cost_min=&cost_max=&cities=465&distance=0&mainCity=1&search=1&category_id=1168&type=0&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=1&orderBy=-1&detailsSearch=0"
+        }
+    },
+detailed_information_about_product: true,
+product_scrape: {
+    name_selector: "//*[@id='contentArea']/div/div/div/div/div/div/h1/text()",
+    city_selector: "//*[@id='contentArea']/div/div/div/div/div/div/p[contains(@class,'cities')]/text()[2]",
+    condition_selector: "//*[@id='contentArea']/div/div/div/div/div/div/div/div[contains(@class,'value')]/text()",
+    description_selector: "//*[@id='contentArea']/div/div/div/div/div[contains(@class,'description')]/text()",
+    seller_number_selector: "//*[@id='user-info-container']/div/div[contains(@class,'phone-button')]/div[contains(@class,'primary')]/text()",
+    product_price: "//*[@id='contentArea']/div/div/div/div/div/div/p[contains(@class,'price')]/text()"
+    }
+}
