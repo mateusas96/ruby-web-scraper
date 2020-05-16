@@ -1,0 +1,29 @@
+{
+category_scrape: {
+    start_page: "https://www.alio.lt/paieska/?city_id=228626&category_id=3473&searchHash=9bf7ad472e2d1ac55b2f3f35f77267ab073cd5be&top_search=1",
+    name_extractor: "//*[@id='main-content-center']/div[contains(@class,'result')]/div[contains(@class,'desc_m_a_b')]/a/text()",
+    preferred_city_extractor: "//*[@id='main-content-center']/div[contains(@class,'result')]/div[contains(@class,'desc_m_a_b')]/div[1]/text()",
+    price_extractor: "//*[@id='main-content-center']/div[contains(@class,'result')]/div[contains(@class,'desc_m_a_b')]/div[2]/div[@class='price']/span/text()",
+    product_href_extractor: "//*[@id='main-content-center']/div[contains(@class,'result')]/div[contains(@class,'desc_m_a_b')]/a/@href",
+    web_urn_replacer: "",
+    desired_city: "Vilnius",
+    desired_product: ["MacBook Pro 16", "Pro 16", "Pro 16-inch", "pro 16"],
+    desired_product_price: 1500,
+    currency_symbol: "€",
+    pagination: {
+        start_number: 1,
+        pagination_extractor: 1,
+        pagination_generator: "",
+        put_pagination_in: "https://www.alio.lt/paieska/PAGINATION/?city_id=228626&category_id=3473&searchHash=9bf7ad472e2d1ac55b2f3f35f77267ab073cd5be&top_search=1"
+        }
+    },
+detailed_information_about_product: true,
+product_scrape: {
+    name_extractor: "//*[@id='container_left_side']/div/h1/text()",
+    city_extractor: "//*[@id='container_left_side']/div/span[@class='contact-city']/text()",
+    condition_extractor: "//*[@id='container_left_side']/div[@class='addit_i']/div/div[2]/div[1]/div[@class='a_line_val']/text()",
+    description_extractor: "//*[@id='adv_description_b']/div[contains(@class,'a_line_val')]/text()",
+    seller_number_extractor: "//*[@id='phone_val_b']/@data-number",
+    product_price_extractor: "//*[@id='container_left_side']/div/div/span[@class='main_price ']/text()"
+    }
+}
