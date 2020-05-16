@@ -8,7 +8,7 @@ category_scrape: {
     web_urn_replacer: "",
     desired_city: "Vilnius",
     desired_product: ["MacBook Pro 16", "Pro 16", "Pro 16-inch", "pro 16"],
-    desired_product_price: 1500,
+    desired_product_price: 2200,
     currency_symbol: "€",
     pagination: {
         start_number: 1,
