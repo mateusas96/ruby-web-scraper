@@ -17,14 +17,14 @@ class ProductScraper
   def parse_data
     (0...@category_data.size).each do |index|
       product_scraper = Nokogiri::HTML(open(@category_data[index][:product_link]))
-      name = product_scraper.xpath(@config_data[:product_scrape][:name_selector]).text.split(" ").join(" ")
-      city = product_scraper.xpath(@config_data[:product_scrape][:city_selector]).text.split(" ").join(" ")
-      condition = product_scraper.xpath(@config_data[:product_scrape][:condition_selector]).text.split(" ").join(" ")
-      description = product_scraper.xpath(@config_data[:product_scrape][:description_selector]).text.split(" ").join(" ")
-      seller_number = product_scraper.xpath(@config_data[:product_scrape][:seller_number_selector]).text.split(" ").join(" ")
-      product_price = product_scraper.xpath(@config_data[:product_scrape][:product_price]).text.split(" ").join(" ")
+      name = product_scraper.xpath(@config_data[:product_scrape][:name_extractor]).text.split(" ").join(" ")
+      city = product_scraper.xpath(@config_data[:product_scrape][:city_extractor]).text.split(" ").join(" ")
+      condition = product_scraper.xpath(@config_data[:product_scrape][:condition_extractor]).text.split(" ").join(" ")
+      description = product_scraper.xpath(@config_data[:product_scrape][:description_extractor]).text.split(" ").join(" ")
+      seller_number = product_scraper.xpath(@config_data[:product_scrape][:seller_number_extractor]).text.split(" ").join(" ")
+      price = product_scraper.xpath(@config_data[:product_scrape][:product_price_extractor]).text.split(" ").join(" ")
 
-      @product_data.store(index, {name: name, city: city, condition: condition, description: description, seller_number: seller_number, product_price: product_price, product_link: @category_data[index][:product_link]})
+      @product_data.store(index, {name: name, city: city, condition: condition, description: description, seller_number: seller_number, price: price, product_link: @category_data[index][:product_link]})
     end
     self.send_data_to_mail_sender
   end

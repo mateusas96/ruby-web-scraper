@@ -34,23 +34,22 @@ class CategoryScraper
 
     (0...@web_pages.length).each do |index|
       category_scraper = Nokogiri::HTML(open(@web_pages.values[index]))
-
-      category_scraper.xpath(@config_data[:category_scrape][:preferred_city_selector]).each_with_index do |city, idx|
+      category_scraper.xpath(@config_data[:category_scrape][:preferred_city_extractor]).each_with_index do |city, idx|
         if city.text.gsub(/[,.]/, '').strip != @config_data[:category_scrape][:desired_city] then break end
         temp_hash.store(current_index + idx, { name: '', price: '', city: city.text.gsub(/[,.]/, '').split(" ").join(" "), product_link: ''})
       end
 
-      category_scraper.xpath(@config_data[:category_scrape][:name_selector]).each_with_index do |name ,idx|
+      category_scraper.xpath(@config_data[:category_scrape][:name_extractor]).each_with_index do |name ,idx|
         if (current_index + idx) === temp_hash.size then break end
         temp_hash[current_index + idx][:name] = name.text.split(" ").join(" ")
       end
 
-      category_scraper.xpath(@config_data[:category_scrape][:price_selector]).each_with_index do |price, idx|
+      category_scraper.xpath(@config_data[:category_scrape][:price_extractor]).each_with_index do |price, idx|
         if (current_index + idx) === temp_hash.size then break end
         temp_hash[current_index + idx][:price] = price.text.split(" ").join(" ").gsub(/[a-zA-ZąĄčČęĘėĖįĮšŠųŲūŪžŽ]/, '')
       end
 
-      category_scraper.xpath(@config_data[:category_scrape][:product_href_selector]).each_with_index do |href, idx|
+      category_scraper.xpath(@config_data[:category_scrape][:product_href_extractor]).each_with_index do |href, idx|
         if (current_index + idx) === temp_hash.size then break end
         temp_hash[current_index + idx][:product_link] = @config_data[:category_scrape][:web_urn_replacer] + href.text
       end
