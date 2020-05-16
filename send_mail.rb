@@ -19,7 +19,7 @@ class MailSender
                         <br><b>City:</b> #{@product_info[index][:city]},
                         <br><b>Condition:</b> #{@product_info[index][:condition]},
                         <br><b>Description:</b> #{@product_info[index][:description]},
-                        <br><b>Price:</b> #{@product_info[index][:product_price]},
+                        <br><b>Price:</b> #{@product_info[index][:price]},
                         <br><b>Seller number:</b> #{@product_info[index][:seller_number]},
                         <br><b>Product link:</b> <a href=\"#{@product_info[index][:product_link]}\">Click</a>"
       end
@@ -56,7 +56,9 @@ class MailSender
   end
 
   def send_mail(mail)
-    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
-    sg.client.mail._('send').post(request_body: mail.to_json)
+    if @product_info != {}
+      sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+      sg.client.mail._('send').post(request_body: mail.to_json)
+    end
   end
 end
