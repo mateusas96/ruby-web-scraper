@@ -7,7 +7,7 @@ category_scrape: {
     product_href_selector: "//*[@id='itemsList']/ul/li/div/h3/a/@href",
     web_urn_replacer: "https://www.skelbiu.lt",
     desired_city: "Vilnius",
-    desired_product: ["MacBook Pro 16", "Pro 16", "Pro 16-inch"],
+    desired_product: ["MacBook Pro 16", "Pro 16", "Pro 16-inch", "pro 16"],
     desired_product_price: 2200,
     currency_symbol: "€",
     pagination: {
@@ -17,7 +17,7 @@ category_scrape: {
         put_pagination_in: "https://www.skelbiu.lt/skelbimai/PAGINATION?autocompleted=1&keywords=&submit_bn=&cost_min=&cost_max=&cities=465&distance=0&mainCity=1&search=1&category_id=1168&type=0&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=1&orderBy=-1&detailsSearch=0"
         }
     },
-detailed_information_about_product: true,
+detailed_information_about_product: false,
 product_scrape: {
     name_selector: "//*[@id='contentArea']/div/div/div/div/div/div/h1/text()",
     city_selector: "//*[@id='contentArea']/div/div/div/div/div/div/p[contains(@class,'cities')]/text()[2]",
