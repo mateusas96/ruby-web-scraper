@@ -66,7 +66,7 @@ class CategoryScraper
       (0...@config_data[:category_scrape][:desired_product].length).each do |product|
         if !!(@category_data[index][:name] =~ /#{@config_data[:category_scrape][:desired_product][product]}/)
           if current_index != 0 && @filtered_category_data[current_index-1][:product_link] == @category_data[index][:product_link] then next end
-          if @category_data[index][:price].gsub(@config_data[:category_scrape][:currency_symbol], '').split(" ").join("").to_i >= @config_data[:category_scrape][:desired_product_price] then next end
+          if @category_data[index][:price].gsub(@config_data[:category_scrape][:currency_symbol], '').split(" ").join("").to_i > @config_data[:category_scrape][:desired_product_price] then next end
           @filtered_category_data.store(current_index,{name: @category_data[index][:name], price: @category_data[index][:price], city: @category_data[index][:city], product_link: @category_data[index][:product_link]})
           current_index += 1
         end
